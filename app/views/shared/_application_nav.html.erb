@@ -1,4 +1,14 @@
-<div class="container">
-  <%= nav_helper 'nav-link' %>
-  <%= login_helper 'nav-link' %>
-</div>
+<nav class="navbar is-fixed-top is-transparent is-centered" role="navigation">
+  <div class="navbar-brand">
+    <strong>Facebook</strong>
+  </div>
+  <div class="navbar-item">
+    <%= link_to "Home", root_path %>
+  </div>
+  <div class="navbar-item">
+    <%= login_helper %>
+  </div>
+    <div class="navbar-item">
+    <%= link_to " Create New Post", new_post_path %>
+  </div>
+</nav>

@@ -1,0 +1,15 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+        <% post.errors.full_messages.each do |error| %>
+          <%= render "shared/flash", level: :error, content: error %>
+        <% end %>
+  <% end %>
+
+  <div class="field">
+    <%= form.rich_text_area :body, class: 'control textarea', rows: 15, placeholder: 'Content' %>
+  </div>
+
+  <div class="field is-grouped">
+    <%= form.submit "Submit", class: 'control button is-primary' %>
+  </div>
+<% end %>

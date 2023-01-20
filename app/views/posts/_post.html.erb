@@ -1,0 +1,20 @@
+<div class="columns is-multiline is-centered post">
+  <div class="column is-3"></div>
+  <div class="column is-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="post-member"><%= link_to "A post by #{post.member.email}", post %></h4>
+        <p class="post-meta">Posted <%= distance_of_time_in_words(post.created_at, Time.now) %> ago</p>
+      </div>
+      <div class="card-content">
+        <p><%= post.body %></p>
+      </div>
+      <div class="card-footer">
+        <%= render partial: 'posts/admin_actions', locals: { post: post } %>
+      </div>
+    </div>
+        <%= render partial: 'comments/comments', locals: { commentable: post } %>
+        <%= render partial: 'comments/form', locals: { commentable: post } %>
+      <strong><hr></strong>
+  </div>
+</div>
