@@ -1,0 +1,21 @@
+  <h3>Comments</h3>
+
+<% commentable.comments.each do |comment| %>
+  <div class="card comment-card">
+    <div class="card-content comment">
+      <div class="columns">
+        <div class="column is-2">
+          <%= gravatar_helper comment.member %>
+        </div>
+        <div class="column is-10">
+          <div>
+            <%= comment.body %>
+          </div>
+          <div class="comment-attribution">
+            Comment posted by <span class="comment-name"><%= comment.member.email %></span> <%= distance_of_time_in_words(comment.created_at, Time.now) %> ago
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

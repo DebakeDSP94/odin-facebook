@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -17,4 +16,8 @@ Rails.application.routes.draw do
                sign_out: "logout",
                sign_up: "register"
              }
+
+  resources :posts do
+    resources :comments, module: :posts
+  end
 end

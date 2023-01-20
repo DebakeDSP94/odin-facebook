@@ -1,0 +1,2 @@
+class MemberProfilesController < ApplicationController
+end

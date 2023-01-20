@@ -37,3 +37,28 @@
 // @import "bulma/sass/layout/section.sass";
 
 @import 'bulma/bulma';
+@import 'actiontext.css';
+
+.svgbtn {
+	display: inline-block;
+	z-index: 100;
+	width: 30px;
+}
+
+.close-flash {
+	color: white;
+}
+
+.post {
+	margin-bottom: 4rem;
+}
+
+html,
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+body > footer {
+	margin-top: auto;
+}
