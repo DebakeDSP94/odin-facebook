@@ -1,6 +1,6 @@
 <%= form_with model: [commentable, Comment.new] do |f| %>
   <div class="form-group">
-    <%= f.rich_text_area :body, class: "form-control", placeholder: "Add a comment" %>
+    <%= f.text_area :body, class: "textarea", placeholder: "Add a comment" %>
   </div>
-  <%= f.submit class: "button is-primary" %>
+  <%= f.submit class: "button is-primary is-light" %>
 <% end %>

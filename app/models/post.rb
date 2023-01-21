@@ -6,4 +6,8 @@ class Post < ApplicationRecord
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes
+
+  def self.recent
+    order("updated_at DESC")
+  end
 end

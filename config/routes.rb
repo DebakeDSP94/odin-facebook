@@ -17,7 +17,9 @@ Rails.application.routes.draw do
                sign_up: "register"
              }
 
-  resources :posts do
-    resources :comments, module: :posts
+  shallow do
+    resources :posts do
+      resources :comments
+    end
   end
 end

@@ -1,7 +1,7 @@
-<% if post.member = current_member %>
+<% if current_member && post.member == current_member %>
   <nav class="navbar">
-    <%= button_to 'Edit post', edit_post_path(post), class: "button is-warning" %>
-    <%= button_to 'Delete post', post, data: { turbo_method: :delete,
-                        turbo_confirm: 'Are you sure?' }, class: "button is-danger" %>
+    <%= link_to 'Edit post', edit_post_path(post), class: "button is-warning is-light is-small" %>
+    <%= link_to 'Delete post', post, data: { turbo_method: :delete,
+                        turbo_confirm: 'Are you sure?' }, class: "button is-danger is-light is-small" %>
   </nav>
 <% end %>

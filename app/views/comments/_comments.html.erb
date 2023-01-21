@@ -13,6 +13,9 @@
           </div>
           <div class="comment-attribution">
             Comment posted by <span class="comment-name"><%= comment.member.email %></span> <%= distance_of_time_in_words(comment.created_at, Time.now) %> ago
+            <% if current_member && current_member == comment.member %>
+              <%= link_to "Delete comment", [@commentable, comment], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "button is-danger is-light is-small" %>
+            <% end %>
           </div>
         </div>
       </div>

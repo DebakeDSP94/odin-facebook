@@ -7,9 +7,9 @@
       </div>
       <div class="navbar-item">
         <span class="is-right blogcrumb">
-          <%= link_to 'Edit post', edit_post_path(@post) %>
+          <%= link_to 'Edit post', edit_post_path(@post), class: "button is-warning is-light is-small" %>
           <%= link_to 'Delete post', @post, data: { turbo_method: :delete,
-                            turbo_confirm: "Are you sure you want to delete this post" } %>
+                            turbo_confirm: "Are you sure you want to delete this post"} , class: "button is-danger is-light is-small" %>
         </span>
       </div>
     </nav>

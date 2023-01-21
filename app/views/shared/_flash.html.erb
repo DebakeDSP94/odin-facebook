@@ -1,14 +1,18 @@
-<div class="">
-  <div data-controller="alert" class="card <%= flash_class(level) %>">
-    <div class="card-content">
-      <p class="content">
-        <%= content %>
-      </p>
-    </div>
-    <div class="button-container">
-      <button data-action="alert#close" class="button close-flash <%= flash_class(level) %>">
-        <%= inline_svg_tag 'close.svg', class: 'svgbtn', style: 'color: white' %>
-      </button>
+<div class="columns">
+  <div class="column is-2"></div>
+  <div class="column is-4">
+    <div data-controller="alert" class="card <%= flash_class(level) %>">
+      <div class="card-content">
+        <p class="content">
+          <%= content %>
+        </p>
+      </div>
+      <div class="button-container">
+        <button data-action="alert#close" class="button close-flash <%= flash_class(level) %>">
+          <%= inline_svg_tag 'close.svg', class: 'svgbtn', style: 'color: white' %>
+        </button>
+      </div>
     </div>
   </div>
 </div>
+

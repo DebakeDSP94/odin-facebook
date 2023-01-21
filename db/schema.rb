@@ -56,13 +56,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_212035) do
     t.bigint "member_id", null: false
     t.string "commentable_type", null: false
     t.bigint "commentable_id", null: false
-    t.bigint "post_id", null: false
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["member_id"], name: "index_comments_on_member_id"
-    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "friend_requests", force: :cascade do |t|
@@ -137,7 +135,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_212035) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "members"
-  add_foreign_key "comments", "posts"
   add_foreign_key "friend_requests", "members", column: "request_receiver_id"
   add_foreign_key "friend_requests", "members", column: "request_sender_id"
   add_foreign_key "friends", "members"
