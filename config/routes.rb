@@ -17,9 +17,16 @@ Rails.application.routes.draw do
                sign_up: "register"
              }
 
+  as :member do
+    get ":member/edit-profile" => "devise/registrations#edit",
+        :as => :edit_member_profile
+  end
+
   shallow do
     resources :posts do
       resources :comments
     end
   end
+
+  resources :likes, only: %i[create destroy]
 end

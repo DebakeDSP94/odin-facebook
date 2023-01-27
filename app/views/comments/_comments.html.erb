@@ -5,16 +5,28 @@
     <div class="card-content comment">
       <div class="columns">
         <div class="column is-2">
-          <%= gravatar_helper comment.member %>
+          <%= link_to profile_helper(comment.member), member_path %>
         </div>
         <div class="column is-10">
           <div>
             <%= comment.body %>
           </div>
-          <div class="comment-attribution">
-            Comment posted by <span class="comment-name"><%= comment.member.email %></span> <%= distance_of_time_in_words(comment.created_at, Time.now) %> ago
-            <% if current_member && current_member == comment.member %>
-              <%= link_to "Delete comment", [@commentable, comment], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "button is-danger is-light is-small" %>
+          <div class="comment-attribution breadcrumb">
+            Comment posted by <span class="comment-name"><%= comment.member.name %></span> <%= distance_of_time_in_words(comment.created_at, Time.now) %> ago
+            <ul>
+              <li>
+                <%= render partial: 'likes/like_button', locals: { likeable: comment } %>
+                <%= comment.likes.count %>
+              </li>
+              <% if current_member && current_member == comment.member %>
+                <li class="is-center">
+                  <%= link_to comment, data: { turbo_method: :delete,turbo_confirm: "Are you sure you want to delete this post"} do %>
+                    <span class="icon is-medium">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </span>
+                  <% end %>
+                </li>
+              </ul>
             <% end %>
           </div>
         </div>

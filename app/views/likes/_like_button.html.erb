@@ -1,0 +1,10 @@
+<% like = current_member.likes.find_by(likeable: likeable) %>
+<% if like.nil? %>
+  <%= button_to likes_path, params:{ like: {likeable_id: likeable.id, likeable_type: likeable.class.to_s}}, class: "button is-ghost" do %>
+    <span class="icon is-small"><i class="fa-regular fa-thumbs-up"></i></span>
+  <% end %>
+<% else %>
+  <%= link_to like_path(like), data: { turbo_method: :delete }, class: 'button is-ghost' do %>
+    <span class="icon is-small"><i class="fa-regular fa-thumbs-down"></i></span>
+  <% end %>
+<% end %>

@@ -80,23 +80,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_212035) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.bigint "post_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_likes_on_post_id"
-  end
-
-  create_table "member_profiles", force: :cascade do |t|
     t.bigint "member_id", null: false
-    t.string "name"
-    t.string "email"
-    t.string "location"
-    t.string "employer"
-    t.string "age"
-    t.string "link"
+    t.string "likeable_type"
+    t.bigint "likeable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_member_profiles_on_member_id"
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
+    t.index ["member_id", "likeable_type", "likeable_id"], name: "index_likes_on_member_id_and_likeable_type_and_likeable_id", unique: true
+    t.index ["member_id"], name: "index_likes_on_member_id"
   end
 
   create_table "members", force: :cascade do |t|
@@ -105,6 +96,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_212035) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
+    t.string "location"
+    t.string "employer"
+    t.string "age"
+    t.string "link"
+    t.text "profile"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_members_on_email", unique: true
@@ -138,8 +135,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_212035) do
   add_foreign_key "friend_requests", "members", column: "request_receiver_id"
   add_foreign_key "friend_requests", "members", column: "request_sender_id"
   add_foreign_key "friends", "members"
-  add_foreign_key "likes", "posts"
-  add_foreign_key "member_profiles", "members"
+  add_foreign_key "likes", "members"
   add_foreign_key "notifications", "members"
   add_foreign_key "posts", "members"
 end

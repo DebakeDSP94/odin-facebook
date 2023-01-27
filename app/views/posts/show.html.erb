@@ -1,25 +1,43 @@
-<div class="columns is-multiline is-centered post">
+<div class="columns is-multiline is-centered post post-content">
+  <div class="column is-3"></div>
+  <div class="column is-1">
+    <span class="is-rounded"><%= profile_helper @post.member %></span>
+  </div>
+  <div class="column is-5">
+      <nav class="breadcrumb is-right">
+      <ul>
+        <li><%= link_to posts_path do %>
+          <span class="icon is-medium">
+            <i class="fa-solid fa-arrow-left-long"></i>
+          </span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to edit_post_path(@post) do %>
+            <span class="icon is-medium">
+              <i class="fa-solid fa-pencil"></i>
+            </span>
+          <% end %>
+        </li>
+                <li class="is-center">
+          <%= link_to @post, data: { turbo_method: :delete,turbo_confirm: "Are you sure you want to delete this post"} do %>
+            <span class="icon is-medium">
+              <i class="fa-solid fa-trash-can"></i>
+            </span>
+          <% end %>
+        </li>
+        <%= render partial: 'likes/like_button', locals: { likeable: @post } %>
+        <%= @post.likes.count %>
+    </nav>
+  </div>
+  <div class="column is-3"></div>
   <div class="column is-3"></div>
   <div class="column is-6">
-    <nav class="navbar">
-      <div class="navbar-item">
-        <%= link_to "Back to posts", posts_path%>
-      </div>
-      <div class="navbar-item">
-        <span class="is-right blogcrumb">
-          <%= link_to 'Edit post', edit_post_path(@post), class: "button is-warning is-light is-small" %>
-          <%= link_to 'Delete post', @post, data: { turbo_method: :delete,
-                            turbo_confirm: "Are you sure you want to delete this post"} , class: "button is-danger is-light is-small" %>
-        </span>
-      </div>
-    </nav>
-
-    <div>
-      <p>
-        <%= @post.body %>
-      </p>
-      <%= render partial: 'comments/comments', locals: {commentable: @post} %>
-      <%= render partial: 'comments/form', locals: {commentable: @post} %>
+    <div class="">
+      <%= @post.body %>
     </div>
+    <%= render partial: 'comments/comments', locals: {commentable: @post} %>
+    <%= render partial: 'comments/form', locals: {commentable: @post} %>
   </div>
+  <div class="column is-3"></div>
 </div>

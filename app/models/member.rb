@@ -6,4 +6,10 @@ class Member < ApplicationRecord
          :recoverable,
          :rememberable,
          :validatable
+
+  mount_uploader :profile, ProfileUploader
+  has_many :likes
+  has_many :friends
+  has_many :comments
+  has_and_belongs_to_many :friend_requests
 end

@@ -42,7 +42,30 @@
       <%= f.password_field :current_password, autocomplete: "current-password", class: "input" %>
     </div>
   </div>
+    <div class="field">
+      <%= f.text_field :name, class: 'control input', placeholder: 'Name' %>
+    </div>
 
+    <div class="field">
+      <%= f.text_field :location, class: 'control input', placeholder: 'Location' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :employer, class: 'control input', placeholder: 'Employer' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :age, class: 'control input', placeholder: 'Age' %>
+    </div>
+
+    <div class="field">
+      <%= f.url_field :link, class: 'control input', placeholder: 'Link' %>
+    </div>
+        <div class="field">
+    <label class="button is-primary">
+      Upload a profile picture <%= f.file_field :profile, style: 'display: none;' %>
+    </label>
+    </div>
   <div class="actions">
     <%= f.submit "Update", class: "button is-primary" %>
   </div>

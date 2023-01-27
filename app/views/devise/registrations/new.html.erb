@@ -29,7 +29,35 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
         </div>
       </div>
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: 'control input', placeholder: 'Name' %>
+    </div>
 
+    <div class="field">
+      <%= f.label :location %><br>
+      <%= f.text_field :location, class: 'control input', placeholder: 'Location' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :employer %><br>
+      <%= f.text_field :employer, class: 'control input', placeholder: 'Employer' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :age %><br>
+      <%= f.text_field :age, class: 'control input', placeholder: 'Age' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :link %><br>
+      <%= f.url_field :link, class: 'control input', placeholder: 'Link' %>
+    </div>
+    <div class="field">
+    <label class="button is-primary">
+      Upload a profile picture <%= f.file_field :profile, style: 'display: none;' %>
+    </label>
+    </div>
       <div class="actions">
         <%= f.submit "Sign up", class: "button is-primary" %>
       </div>

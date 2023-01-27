@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_member!
+  before_action :configure_permitted_parameters, if: :devise_controller?
   after_action :store_action
 
   def store_action
@@ -13,7 +14,6 @@ class ApplicationController < ActionController::Base
            request.path != "/members/sign_out" && !request.xhr?
        ) # don't store ajax calls
       store_location_for(:member, posts_path)
-      flash[:success] = "You have successfully logged in."
     end
   end
 
@@ -22,4 +22,13 @@ class ApplicationController < ActionController::Base
   end
 
   add_flash_types :info, :success, :warning
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(
+      :sign_up,
+      keys: %i[name location employer age link profile]
+    )
+  end
 end

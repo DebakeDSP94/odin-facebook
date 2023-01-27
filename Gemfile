@@ -84,10 +84,14 @@ gem 'omniauth-facebook', '~> 9.0'
 
 gem 'petergate', '~> 3.0'
 
-gem 'dotenv'
+gem 'dotenv-rails'
 
 gem "inline_svg", "~> 1.8"
 
 gem 'wilson_view_tool', '~> 0.1.0'
 
 gem 'font-awesome-sass', '~> 6.2.1'
+
+gem 'carrierwave-aws', '~> 1.5'
+
+gem 'mini_magick', '~> 4.11'
