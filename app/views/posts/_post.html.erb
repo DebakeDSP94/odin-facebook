@@ -1,10 +1,9 @@
-<div class="columns is-multiline is-centered post">
+<div class="columns is-multiline is-centered post ">
   <div class="column is-3"></div>
   <div class="column is-6">
     <div class="card">
       <div class="card-header">
-        <h4 class="post-member"><%= link_to "A post by #{post.member.email}", post %></h4>
-        <p class="post-meta">Posted <%= distance_of_time_in_words(post.created_at, Time.now) %> ago</p>
+        <h4 class="post-member"><%= profile_helper post.member%><%= link_to "A post by #{post.member.name}", post %><%= distance_of_time_in_words(post.created_at, Time.now) %> ago</h4>
       </div>
       <div class="card-content">
         <p><%= post.body %></p>

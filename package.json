@@ -8,6 +8,7 @@
     "bulma": "^0.9.4",
     "esbuild": "^0.17.0",
     "sass": "^1.57.1",
+    "stimulus-popover": "^6.2.0",
     "stimulus-read-more": "^4.1.0",
     "trix": "^2.0.4"
   },

@@ -37,14 +37,14 @@ export default class extends Controller {
 	show() {
 		this.element.setAttribute(
 			'style',
-			'transition: 0.5s; transform:translate(0, -100px);'
+			'transition: 0.5s; transform:translate(0, 100px);'
 		);
 	}
 
 	hide() {
 		this.element.setAttribute(
 			'style',
-			'transition: 1s; transform:translate(0, 200px);'
+			'transition: 1s; transform:translate(0, -200px);'
 		);
 	}
 }

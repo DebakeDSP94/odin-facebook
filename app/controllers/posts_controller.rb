@@ -1,13 +1,13 @@
-class PostsController < CommentsController
+class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
-    @posts = Post.with_rich_text_body_and_embeds.all
+    @posts = Post.recent.with_rich_text_body_and_embeds.all
   end
 
   def show
     @post = Post.includes(:comments).find(params[:id])
-    @comment = Comment.new
+    @comments = @post.comments
   end
 
   def new
