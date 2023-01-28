@@ -1,0 +1,7 @@
+User list
+<div class="columns is-multiline is-centered">
+  <% @members.each do |member| %>
+    <%= render partial: 'member', locals: { member: member } %>
+  <% end %>
+</div>
+

@@ -23,7 +23,14 @@
       <div data-trix-mark-target="source">
         <%= render "shared/application_nav" %>
         <%= render 'shared/flash_container' %>
-        <%= yield %>
+        <div class="columns">
+          <div class="column is-3">
+          </div>
+          <div class="column is-6">
+            <%= yield %>
+          </div>
+          <div class="column is-3"></div>
+        </div>
         <%= render 'shared/application_footer' %>
       </div>
     </div>

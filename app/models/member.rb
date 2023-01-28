@@ -9,7 +9,7 @@ class Member < ApplicationRecord
 
   mount_uploader :profile, ProfileUploader
   has_many :likes
-  has_many :friends
+  has_many :friends, class_name: "Member"
   has_many :comments
   has_and_belongs_to_many :friend_requests
 end

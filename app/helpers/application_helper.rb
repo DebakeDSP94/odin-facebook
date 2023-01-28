@@ -39,7 +39,12 @@ module ApplicationHelper
 
   def profile_helper(member)
     unless member.profile.file.nil?
-      image_tag(member.profile.to_s, width: 60, height: 60).html_safe
+      image_tag(
+        member.profile.to_s,
+        width: 60,
+        height: 60,
+        style: "border-radius: 50%"
+      ).html_safe
     else
       gravatar_helper(member)
     end
@@ -48,6 +53,7 @@ module ApplicationHelper
   def gravatar_helper(member)
     image_tag "https://gravatar.com/avatar/#{Digest::MD5.hexdigest(member.email.downcase)}",
               width: 60,
-              height: 60
+              height: 60,
+              style: "border-radius: 50%;"
   end
 end

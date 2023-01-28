@@ -13,12 +13,21 @@
   <div class="navbar-item">
     <%= link_to " Create New Post", new_post_path %>
   </div>
-    <div class="navbar-item">
+  <div class="navbar-item">
     <%= link_to "All Posts", posts_path %>
+  </div>
+  <div class="navbar-item">
+    <%= link_to "All Users", members_path %>
+  </div>
+  <div class="navbar-item navbar-end">
+    <div class="notification is-info is-light">
+      <button class="delete"></button>
+      <i class="fa-solid fa-bell"></i>
+    </div>
   </div>
   <% if member_signed_in? %>
     <div class="navbar-item navbar-end">
-      <%= link_to edit_member_profile_path(current_member) do %>
+      <%= link_to edit_member_registration_path(current_member) do %>
         <span><%= profile_helper(current_member) %></span>
       <% end %>
     </div>

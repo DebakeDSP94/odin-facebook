@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "members/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -6,21 +7,16 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   devise_scope :member do
-    get "member", to: "devise/sessions#new"
+    get "member", to: "members/sessions#new"
   end
 
   devise_for :members,
-             path: "",
-             path_names: {
-               sign_in: "login",
-               sign_out: "logout",
-               sign_up: "register"
+             controllers: {
+               sessions: "members/sessions",
+               registrations: "members/registrations"
              }
 
-  as :member do
-    get ":member/edit-profile" => "devise/registrations#edit",
-        :as => :edit_member_profile
-  end
+  resources :members, only: %i[index show]
 
   shallow do
     resources :posts do
