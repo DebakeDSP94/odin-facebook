@@ -9,6 +9,9 @@
     <div class="github-login" data-turbo="false">
       <%= button_to "Sign in with Github", member_github_omniauth_authorize_path, format: :html, method: :post, class: "button is-link" %>
     </div>
+    <div class="github-login" data-turbo="false">
+      <%= button_to "Sign in with Google", member_google_oauth2_omniauth_authorize_path, format: :html, method: :post, class: "button is-link" %>
+    </div>
     <h2>Log in</h2>
     <br>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

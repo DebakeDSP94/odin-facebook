@@ -33,7 +33,7 @@ class Member < ApplicationRecord
          :rememberable,
          :validatable,
          :omniauthable,
-         omniauth_providers: %i[facebook github]
+         omniauth_providers: %i[facebook github google_oauth2]
 
   mount_uploader :profile, ProfileUploader
   has_many :likes

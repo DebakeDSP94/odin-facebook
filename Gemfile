@@ -102,6 +102,8 @@ gem 'omniauth-rails_csrf_protection'
 
 gem 'omniauth-github', '~> 2.0', '>= 2.0.1'
 
+gem 'omniauth-google-oauth2'
+
 group :development do
   gem 'annotate'
 end
