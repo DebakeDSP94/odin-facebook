@@ -23,3 +23,10 @@ class ApplicationController < ActionController::Base
 
   add_flash_types :info, :success, :warning
 end
+
+def configure_permitted_parameters
+  devise_parameter_sanitizer.permit(
+    :sign_up,
+    keys: %i[name location employer age link profile]
+  )
+end

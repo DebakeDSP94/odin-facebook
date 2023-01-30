@@ -1,24 +1,20 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: authorizations
 #
 #  id         :bigint           not null, primary key
-#  body       :text
+#  provider   :string
+#  secret     :string
+#  token      :string
+#  uid        :string
+#  username   :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  member_id  :bigint           not null
-#
-# Indexes
-#
-#  index_posts_on_member_id  (member_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (member_id => members.id)
+#  member_id  :integer
 #
 require "test_helper"
 
-class PostTest < ActiveSupport::TestCase
+class AuthorizationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

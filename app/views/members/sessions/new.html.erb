@@ -4,9 +4,16 @@
 
   </div>
   <div class="column is-8">
+  <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
+    <div class="github-login" data-turbo="false">
+      <%= button_to "Sign in with Github", member_github_omniauth_authorize_path, format: :html, method: :post, class: "button is-link" %>
+    </div>
     <h2>Log in</h2>
     <br>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+
     <div class="field">
       <div class="control">
           <%= f.label :email %><br />
