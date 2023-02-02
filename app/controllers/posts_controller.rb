@@ -24,11 +24,11 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.html do
-          redirect_to post_url(@post), success: "Post was successfully created"
+          redirect_to(post_url(@post), success: "Post was successfully created")
         end
       else
         flash[:danger] = "Post must have some content."
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render(:new, status: :unprocessable_entity) }
       end
     end
   end
@@ -37,10 +37,10 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update(post_params)
         format.html do
-          redirect_to post_url(@post), success: "Post was successfully updated"
+          redirect_to(post_url(@post), success: "Post was successfully updated")
         end
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render(:edit, status: :unprocessable_entity) }
       end
     end
   end
@@ -49,7 +49,7 @@ class PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to posts_url, status: :see_other }
+      format.html { redirect_to(posts_url, status: :see_other) }
     end
   end
 

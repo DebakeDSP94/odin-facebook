@@ -29,13 +29,15 @@ Rails.application.configure do
       { url: ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } }
 
     # Add this line
-    config.session_store :cache_store,
-                         key: "_sessions_development",
-                         compress: true,
-                         pool_size: 5,
-                         expire_after: 1.year
+    config.session_store(
+      :cache_store,
+      key: "_sessions_development",
+      compress: true,
+      pool_size: 5,
+      expire_after: 1.year,
+    )
     config.public_file_server.headers = {
-      "Cache-Control" => "public, max-age=#{2.days.to_i}"
+      "Cache-Control" => "public, max-age=#{2.days.to_i}",
     }
   else
     config.action_controller.perform_caching = false

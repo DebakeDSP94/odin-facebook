@@ -11,11 +11,11 @@ Rails.application.routes.draw do
   end
 
   devise_for :members,
-             controllers: {
-               sessions: "members/sessions",
-               registrations: "members/registrations",
-               omniauth_callbacks: "members/omniauth_callbacks"
-             }
+    controllers: {
+      sessions: "members/sessions",
+      registrations: "members/registrations",
+      omniauth_callbacks: "members/omniauth_callbacks",
+    }
 
   resources :members, only: %i[index show]
 

@@ -10,7 +10,7 @@ class LikesController < ApplicationController
     @like.destroy
 
     respond_to do |format|
-      format.html { redirect_to posts_url, status: :see_other }
+      format.html { redirect_to(posts_url, status: :see_other) }
     end
   end
 

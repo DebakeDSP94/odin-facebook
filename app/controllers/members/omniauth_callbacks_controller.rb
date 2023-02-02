@@ -11,7 +11,7 @@ class Members::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session["devise.member_attributes"] = member.attributes
       puts member.errors.full_messages
 
-      redirect_to new_user_registration_url
+      redirect_to(new_user_registration_url)
     end
   end
 

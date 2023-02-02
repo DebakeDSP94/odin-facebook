@@ -17,7 +17,7 @@ class MembersController < ApplicationController
 
   def member_params
     params.require(:member).permit(
-      %i[email name age location employer link profile]
+      %i[email name age location employer link profile],
     )
   end
 end
