@@ -1,6 +1,6 @@
-<% if current_member && post.member == current_member %>
-  <nav class="breadcrumb is-right">
-    <ul>
+<nav class="breadcrumb is-right">
+  <ul>
+    <% if current_member && post.member == current_member %>
       <li>
         <%= link_to edit_post_path(post) do %>
           <span class="icon is-medium">
@@ -15,10 +15,10 @@
           </span>
         <% end %>
       </li>
-      <li>
-        <%= render partial: 'likes/like_button', locals: { likeable: post } %>
-        <%= post.likes.count %>
-      </li>
-    </ul>
-  </nav>
-<% end %>
+    <% end %>
+    <li>
+      <%= render partial: 'likes/like_button', locals: { likeable: post } %>
+      <%= post.likes.count %>
+    </li>
+  </ul>
+</nav>

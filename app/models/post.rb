@@ -25,6 +25,9 @@ class Post < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable
 
+  has_noticed_notifications model_name: 'Notification'
+  has_many :notifications, through: :member, dependent: :destroy
+
   def self.recent
     order("updated_at DESC")
   end

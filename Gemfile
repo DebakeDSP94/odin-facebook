@@ -113,3 +113,5 @@ gem 'rubocop', require: false
 gem 'rubocop-shopify', require: false
 
 gem 'solargraph'
+
+gem 'noticed', '~> 1.6'

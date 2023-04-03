@@ -34,10 +34,12 @@ class Member < ApplicationRecord
     omniauth_providers: %i[facebook github google_oauth2]
 
   mount_uploader :profile, ProfileUploader
+  has_many :posts
   has_many :likes
   has_many :friends, class_name: "Member"
-  has_many :comments
+  has_many :comments, as: :commentable, dependent: :destroy
   has_and_belongs_to_many :friend_requests
+  has_many :notifications, as: :recipient, dependent: :destroy
 
   has_many :authorizations
 
@@ -70,12 +72,8 @@ class Member < ApplicationRecord
             email: auth.info.email,
             password: Devise.friendly_token[0, 10],
             name: auth.info.name,
-            locations: auth.info.location,
             profile: auth.info.image,
           )
-          # since twitter don't provide email,
-          # so you need to skip validation for twitter.
-          auth.provider == "twitter" ? user.save!(validate: false) : user.save!
         end
 
         # store authorization related data in authorization table

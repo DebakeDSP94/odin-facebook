@@ -23,7 +23,7 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v15.0" nonce="6HQEeU65"></script>
     <div  data-controller="trix-mark">
       <div data-trix-mark-target="source">
-        <%= render "shared/application_nav" %>
+        <%= render "shared/application_nav", notification: @notification %>
         <%= render 'shared/flash_container' %>
         <div class="columns">
           <div class="column is-3">

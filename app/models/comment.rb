@@ -23,6 +23,19 @@ class Comment < ApplicationRecord
   belongs_to :member
   belongs_to :commentable, polymorphic: true, touch: true
   has_many :likes, as: :likeable
+  after_create_commit :notify_recipient
+  before_destroy :cleanup_notifications
+  has_noticed_notifications model_name: 'Notification'
 
   has_rich_text :body
+
+  private
+
+  def notify_recipient
+    CommentNotification.with(comment: self, post: @commentable).deliver_later(commentable.member)
+  end
+
+  def cleanup_notifications
+    notifications_as_comment.destroy_all
+  end
 end
