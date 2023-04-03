@@ -3,14 +3,16 @@ class CommentsController < ApplicationController
   before_action :set_commentable, only: %i[index new create]
 
   def create
-    @comment = @commentable.comments.new comment_params
+    @comment = @commentable.comments.new(comment_params)
     @comment.member = current_member
     puts(params)
     if @comment.save
-      redirect_to posts_path(@commentable),
-                  flash: {
-                    success: "Your comment was successfully created."
-                  }
+      redirect_to(
+        posts_path(@commentable),
+        flash: {
+          success: "Your comment was successfully created.",
+        },
+      )
     end
   end
 
@@ -20,7 +22,7 @@ class CommentsController < ApplicationController
     flash[:success] = "Comment deleted" if @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to posts_url, status: :see_other }
+      format.html { redirect_to(posts_url, status: :see_other) }
     end
   end
 

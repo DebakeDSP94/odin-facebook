@@ -1,16 +1,12 @@
-<div class="columns">
-  <div class="column"></div>
-  <div class="column is-three-fifths">
-    <h1>Editing post</h1>
 
-    <%= render "form", post: @post %>
+<h1>Editing post</h1>
 
-    <br>
+<%= render "form", post: @post %>
 
-    <div>
-      <%= link_to "Show this post", @post %> |
-      <%= link_to "Back to posts", posts_path %>
-    </div>
-  </div>
-  <div class="column"></div>
+<br>
+
+<div>
+  <%= link_to "Show this post", @post %> |
+  <%= link_to "Back to posts", posts_path %>
 </div>
+

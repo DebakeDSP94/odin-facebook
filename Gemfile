@@ -78,13 +78,9 @@ gem "ruby-lsp", "~> 0.3.7", :group => :development
 
 gem "bulma-rails", "~> 0.9.4"
 
-gem 'devise'
-
-gem 'omniauth-facebook', '~> 9.0'
+gem 'jquery-rails'
 
 gem 'petergate', '~> 3.0'
-
-gem 'dotenv-rails'
 
 gem "inline_svg", "~> 1.8"
 
@@ -95,3 +91,27 @@ gem 'font-awesome-sass', '~> 6.2.1'
 gem 'carrierwave-aws', '~> 1.5'
 
 gem 'mini_magick', '~> 4.11'
+
+gem 'dotenv-rails'
+
+gem 'devise'
+
+gem 'omniauth-facebook', '~> 9.0'
+
+gem 'omniauth-rails_csrf_protection'
+
+gem 'omniauth-github', '~> 2.0', '>= 2.0.1'
+
+gem 'omniauth-google-oauth2'
+
+group :development do
+  gem 'annotate'
+end
+
+gem 'rubocop', require: false
+
+gem 'rubocop-shopify', require: false
+
+gem 'solargraph'
+
+gem 'noticed', '~> 1.6'

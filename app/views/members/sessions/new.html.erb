@@ -1,12 +1,32 @@
 
 <div class="columns">
-  <div class="column is-6">
+  <div class="column is-4">
 
   </div>
-  <div class="column is-4">
+  <div class="column is-8">
+    <div class="fb-login-button button is-fullwidth" data-width="" data-size="large" data-button-type="continue_with"   data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
+    </div>
+    <br>
+    <div class="github-login" data-turbo="false">
+      <%= button_to  member_github_omniauth_authorize_path, format: :html, method: :post, class: "button is-black is-fullwidth" do %>
+        <span class="icon">
+          <i class="fab fa-github"></i>
+        </span>
+      <% end %>
+    </div>
+    <br>
+    <div class="google-login" data-turbo="false">
+      <%= button_to member_google_oauth2_omniauth_authorize_path, format: :html, method: :post, class: "button is-link is-fullwidth" do %>
+        <span class="icon">
+          <i class="fa-brands fa-google"></i>
+        </span>
+      <% end %>
+    </div>
     <h2>Log in</h2>
     <br>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+
     <div class="field">
       <div class="control">
           <%= f.label :email %><br />

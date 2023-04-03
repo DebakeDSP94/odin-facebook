@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_member!
   before_action :configure_permitted_parameters, if: :devise_controller?
   after_action :store_action
+  before_action :set_notifications, if: :current_member
 
   def store_action
     return unless request.get?
@@ -23,12 +24,18 @@ class ApplicationController < ActionController::Base
 
   add_flash_types :info, :success, :warning
 
-  protected
+  private
+
+  def set_notifications
+    notifications = Notification.where(recipient: current_member).newest_first.limit(9)
+    @unread = notifications.unread
+    @read = notifications.read
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(
       :sign_up,
-      keys: %i[name location employer age link profile]
+      keys: %i[name location employer age link profile],
     )
   end
 end

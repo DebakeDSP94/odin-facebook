@@ -1,4 +1,23 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# == Schema Information
+#
+# Table name: friend_requests
+#
+#  id                  :bigint           not null, primary key
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  request_receiver_id :bigint
+#  request_sender_id   :bigint
+#
+# Indexes
+#
+#  index_friend_requests_on_request_receiver_id  (request_receiver_id)
+#  index_friend_requests_on_request_sender_id    (request_sender_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (request_receiver_id => members.id)
+#  fk_rails_...  (request_sender_id => members.id)
+#
 
 # This model initially had no columns defined. If you add columns to the
 # model remove the "{}" from the fixture names and add the columns immediately

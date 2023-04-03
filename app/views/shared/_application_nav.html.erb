@@ -13,12 +13,38 @@
   <div class="navbar-item">
     <%= link_to " Create New Post", new_post_path %>
   </div>
-    <div class="navbar-item">
+  <div class="navbar-item">
     <%= link_to "All Posts", posts_path %>
   </div>
+  <div class="navbar-item">
+    <%= link_to "All Users", members_path %>
+  </div>
+
   <% if member_signed_in? %>
+    <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link"><span class="badge"><%= @unread.count >= 9 ? "9+" : @unread.count %><i class="fa fa-bell"></i>
+        </span>
+      </a>
+      <ul class="navbar-dropdown">
+        <% @unread.each do |notification| %>
+          <%= render 'notifications/notification', notification: notification %>
+        <% end %>
+        <% if @read.count > 0 && @unread.count > 0 %>
+          <li class="navbar-divider">
+            <hr>
+          </li>
+        <% elsif @read.count + @unread.count == 0%>
+          <li class="navbar-item">
+            <p class="navbar-item">No notifications</p>
+          </li>
+        <% end %>
+        <% @read.each do |notification| %>
+          <%= render 'notifications/notification', notification: notification %>
+        <% end %>
+      </ul>
+    </div>
     <div class="navbar-item navbar-end">
-      <%= link_to edit_member_profile_path(current_member) do %>
+      <%= link_to edit_member_registration_path(current_member) do %>
         <span><%= profile_helper(current_member) %></span>
       <% end %>
     </div>
